@@ -215,6 +215,9 @@ body span:hover {
   }
 }
 @media (max-width: 720px) {
+  #top-bar {
+    display: none;
+  }
   #top-bar .container {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 10px 50px;
@@ -231,7 +234,7 @@ body span:hover {
     display: none;
   }
   #hero {
-    height: calc(100vh - 55px);
+    height: 100vh;
   }
 }
 p.anim {
