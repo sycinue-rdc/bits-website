@@ -14,6 +14,9 @@
     font-family: electrolize;
     src: url(../fonts/Electrolize-Regular.ttf);
 }
+
+// FontAwsome Fonts
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
 body {
     background-color: #0d1117;
 
@@ -239,6 +242,12 @@ body {
     }
 }
 
+@media (min-width: 721px) {
+    #mobile {
+      display: none;
+    }
+  }
+  
 
 @media (max-width: 720px) {
     #top-bar {
@@ -298,6 +307,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: hsla(240deg, 20%, 20%, 1);
+    position: fixed;
     z-index: -999;
   }
   

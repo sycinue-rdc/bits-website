@@ -1,3 +1,4 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
 *, *::before, *::after {
   scroll-behavior: smooth;
   text-decoration: none;
@@ -208,6 +209,11 @@ body span:hover {
   font-size: smaller;
 }
 
+@media (min-width: 721px) {
+  #mobile {
+    display: none;
+  }
+}
 @media (max-width: 720px) {
   #top-bar .container {
     background-color: rgba(255, 255, 255, 0.1);
@@ -256,5 +262,6 @@ canvas {
   margin: 0;
   padding: 0;
   background-color: hsl(240, 20%, 20%);
+  position: fixed;
   z-index: -999;
 }/*# sourceMappingURL=style.css.map */
