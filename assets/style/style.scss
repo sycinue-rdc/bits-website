@@ -24,36 +24,35 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
 
 
-
 body {
     background-color: #0d1117;
 
     h1 {
         text-align: center;
         color: #46b6ff;
-        cursor: pointer;
+        pointer-events: none;
         transition: color ease 1s;
         text-transform: uppercase;
     }
 
-    h1:hover {
-        color: #0044cd;
-    }
-
     h2 {
         color: #137ade;
+        pointer-events: none;
     }
 
     h3 {
         color: #137ade;
+        pointer-events: none;
     }
 
     h4 {
         color: #137ade;
+        pointer-events: none;
     }
 
     p {
         color: rgba(255, 255, 255, 0.5);
+        pointer-events: none;
     }
 
     ul {
@@ -277,10 +276,6 @@ body {
 // - Scroll Bar Hidden
 // - About Page Particles Background
 
-#mobile {
-    display: none;
-}
-
 #hero {
     height: 100vh;
 }
@@ -319,24 +314,58 @@ body {
 
 // End of V0.0.3
 
+// Patch V0.0.4 (11/12/23)
+// Patch Notes :
+// - Added responsive top bar for PC and mobile
+// - Added menu open button for mobile
+// - Added mobile menu
+// - Added subpage header for about page
+// - Adjusted some spacing and margin
+// - Some code cleanup
+
+// Patch V0.0.4.1 (11/13/23)
+// Patch Notes :
+// - Adjusted mobile menu open direction to left
+// - Adjusted font size for mobile menu
+// - Adjusted list gaps for mobile menu
+// - Added blur effect for top bar
+// - Removed pointer-events for headers and paragraphs
+// - Removed hover color effects for text headers
+// - Added Upward-Reveal animation for About-Us in pictures section
+// - Some code cleanup
+
+// Hero Background Animation
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background-color: hsla(240deg, 20%, 20%, 1);
+    position: fixed;
+    z-index: -999;
+}
+
+// Reveal Class Animation
+.reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 2s all ease;
+  }
+  
+  .reveal.active {
+    transform: translateY(0);
+    opacity: .8;
+  }
 
 
-// Original Version (DISABLED IN V0.0.3)
-
-// #hero {
-//     height: calc(100vh - 55px);
-// }
-
-// @media (min-width: 721px) {
-//     #mobile {
-//       display: none;
-//     }
-//   }
+// Start Of Mobile View
 
 #mobile-menu {
     display: none;
 }
-  
+
 @media (max-width: 720px) {
     #top-bar {
         .container {
@@ -345,6 +374,8 @@ body {
             .logo {
                 padding: 10px 8px 10px 16px;
             }
+
+            backdrop-filter: saturate(150%) blur(8px);
         }
         .nav-links {
             ul {
@@ -374,16 +405,16 @@ body {
         display: block;
         position: fixed;
         top: 56px;
-        left: 0;
-        right: 60px;
+        left: 60px;
+        right: 0px;
         bottom: 0;
-        transform: translateX(-100%);
+        transform: translateX(100%);
         transition: transform 300ms ease-in-out;
         background: rgba(0,0,0,0.70);
         backdrop-filter: saturate(150%) blur(8px);
 
         font-family: x-space;
-        font-size: 28px;
+        font-size: 16px;
 
         padding: 32px 16px;
 
@@ -398,7 +429,7 @@ body {
             padding: 0;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 32px;
+            gap: 12px;
 
             li {
                 margin: 0;
@@ -420,36 +451,4 @@ body {
     }
 }
 
-// Special Animation
-  
-  p.anim {
-    text-transform: uppercase;
-    letter-spacing: 8px;
-    font-size: clamp(12px, 5vw, 24px);
-    animation: breath 10000ms ease-in-out infinite alternate;
-    color: white;
-  }
-  p.anim > .last {
-    color: white;
-    letter-spacing: 0;
-  }
-  
-  @keyframes breath {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(1.1);
-    }
-  }
-  
-  canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    background-color: hsla(240deg, 20%, 20%, 1);
-    position: fixed;
-    z-index: -999;
-  }
+// End of V0.0.4 & V0.0.4.1
