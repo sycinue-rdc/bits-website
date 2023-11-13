@@ -33,12 +33,8 @@ body {
         color: #46b6ff;
         cursor: pointer;
         transition: color ease 1s;
-        -webkit-transition: color ease 1s;
-        -moz-transition: color ease 1s;
-        -ms-transition: color ease 1s;
-        -o-transition: color ease 1s;
         text-transform: uppercase;
-}
+    }
 
     h1:hover {
         color: #0044cd;
@@ -68,10 +64,6 @@ body {
     a{
         color: #7ee787;
         transition: color ease 1s;
-        -webkit-transition: color ease 1s;
-        -moz-transition: color ease 1s;
-        -ms-transition: color ease 1s;
-        -o-transition: color ease 1s;
     }
 
     a:hover {
@@ -86,10 +78,6 @@ body {
         color: white;
         cursor: pointer;
         transition: color ease 1s;
-        -webkit-transition: color ease 1s;
-        -moz-transition: color ease 1s;
-        -ms-transition: color ease 1s;
-        -o-transition: color ease 1s;
     }
 
     span:hover {
@@ -98,9 +86,15 @@ body {
 }
 
 #top-bar {
+    font-family: x-space;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: rgba(0,0,0, 0.7);
 
     .container {
-        background-color: rgba(255, 255, 255, 0.1);
         padding: 10px 50px;
         display: flex;
         flex-direction: row;
@@ -109,23 +103,36 @@ body {
         justify-content: space-between;
 
         .logo {
-            font-family: x-space;
             font-size: 30px;
-        }
-        img {
-            display: none;
-        }
 
+            .img {
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                gap: 8px;    
+            }
+
+            img {
+                display: block;
+                width: 32px;
+            }
+        }
+    }
+    .nav-links {
         ul {
             display: flex;
-            flex-direction: row;
             justify-content: center;
             align-items: center;
+            gap: 8px;
 
             li {
                 margin: 0 5px 0 5px;
+                letter-spacing: -0.15rem;
             }
-        }
+        } 
+        button {
+            display: none;
+        }   
     }
 }
 
@@ -152,6 +159,22 @@ body {
     }
 }
 
+.sub {
+    height: 300px;
+    background: rgba(0,0,0,0.8);
+    display: grid;
+    place-items: center;
+    padding-top: 56px;
+
+    h1 {
+        font-size: 40px;
+        font-family: x-space;
+        color: white;
+        text-align: center;
+        text-shadow: 0 0 8px #7ee787;
+    }
+}
+
 #administration {
     font-family: electrolize;
     text-align: center;
@@ -172,15 +195,7 @@ body {
                 margin: 10px;
                 padding: 25px 50px;
                 border-radius: 10px;
-                -webkit-border-radius: 10px;
-                -moz-border-radius: 10px;
-                -ms-border-radius: 10px;
-                -o-border-radius: 10px;
                 transition: background-color ease 0.5s;
-                -webkit-transition: background-color ease 0.5s;
-                -moz-transition: background-color ease 0.5s;
-                -ms-transition: background-color ease 0.5s;
-                -o-transition: background-color ease 0.5s;
 
                 img.officer-img {
                     height: 200px;
@@ -234,11 +249,11 @@ body {
             padding: 20px 20px;
             // background-color: rgba(255, 255, 255, 0.2);
             border-radius: 5px;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            -ms-border-radius: 5px;
-            -o-border-radius: 5px;
-}
+
+            li {
+                margin: 8px 0;
+            }
+        }
     }
 }
 
@@ -247,7 +262,8 @@ body {
     text-align: center;
     background-color: black;
     display: block;
-    width: 100%;
+    padding: 16px 8px;
+
     p {
         font-size: smaller;
     }
@@ -262,10 +278,6 @@ body {
 // - About Page Particles Background
 
 #mobile {
-    display: none;
-}
-
-#top-bar {
     display: none;
 }
 
@@ -320,33 +332,91 @@ body {
 //       display: none;
 //     }
 //   }
+
+#mobile-menu {
+    display: none;
+}
   
 @media (max-width: 720px) {
     #top-bar {
-        display: none;
         .container {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px 50px;
-            display: flex;
-            align-content: center;
-            align-items: center;
-            justify-content: center;
+            padding: 0;
 
             .logo {
-                font-family: x-space;
-                font-size: 30px;
+                padding: 10px 8px 10px 16px;
             }
-
+        }
+        .nav-links {
             ul {
                 display: none;
             }
+            button {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                justify-content: space-between;
+                width: 56px;
+                height: 56px;
+                appearance: none;
+                border: none;
+                background: black;
+                padding: 12px;
 
+                > div {
+                    height: 4px;
+                    background: white;
+                }
+            }
+        }
+    }
+
+    #mobile-menu {
+        display: block;
+        position: fixed;
+        top: 56px;
+        left: 0;
+        right: 60px;
+        bottom: 0;
+        transform: translateX(-100%);
+        transition: transform 300ms ease-in-out;
+        background: rgba(0,0,0,0.70);
+        backdrop-filter: saturate(150%) blur(8px);
+
+        font-family: x-space;
+        font-size: 28px;
+
+        padding: 32px 16px;
+
+        z-index: 100;
+        
+        &.open {
+            transform: translateX(0);
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+
+            li {
+                margin: 0;
+                padding: 0;
+            }
         }
     }
 
     #hero {
-        // height: calc(100vh - 55px);
         height: 100vh;
+    }
+
+    .sub {
+        height: 200px;
+
+        h1 {
+            font-size: 28px;
+        }
     }
 }
 
@@ -383,4 +453,3 @@ body {
     position: fixed;
     z-index: -999;
   }
-  
