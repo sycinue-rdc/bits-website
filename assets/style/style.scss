@@ -126,7 +126,8 @@ body {
 
             li {
                 margin: 0 5px 0 5px;
-                letter-spacing: -0.15rem;
+                // letter-spacing: -0.15rem;
+                font-family: 'Courier New', Courier, monospace;
             }
         } 
         button {
@@ -413,7 +414,8 @@ canvas {
         background: rgba(0,0,0,0.70);
         backdrop-filter: saturate(150%) blur(8px);
 
-        font-family: x-space;
+        // font-family: x-space;
+        font-family: 'Courier New', Courier, monospace;
         font-size: 16px;
 
         padding: 32px 16px;
